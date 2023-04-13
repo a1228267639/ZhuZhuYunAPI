@@ -15,7 +15,7 @@ using ZhuZhuYunAPI.Models;
 //Get-help Migration    //查询命令
 // Add-Migration init    //迁移
 // Remove-Migration      //迁移删除
-// Update-Database       //更新到数据库  测试1111
+// Update-Database       //更新到数据库  
 
 var builder = WebApplication.CreateBuilder(args);
 

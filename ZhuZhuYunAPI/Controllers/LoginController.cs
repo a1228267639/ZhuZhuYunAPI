@@ -539,6 +539,13 @@ namespace ZhuZhuYunAPI.Controllers
             return false;
         }
 
+        public static PanoUser DateSort(List<PanoUser> panoUsers)
+        {
+            PanoUser[] panos =panoUsers.ToArray();
+            Array.Sort(panos, (a, b) =>b.End_Date.CompareTo(a.End_Date));
+            return panos[0];
+        }
+
         private bool Log(Exception ex)
         {
             Debug.Print(ex.Message);

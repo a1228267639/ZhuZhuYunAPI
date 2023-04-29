@@ -162,11 +162,11 @@ namespace ZhuZhuYunAPI.Migrations
                         .Annotation("MySql:CharSet", "utf8"),
                     end_date = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
-                    ip = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
-                        .Annotation("MySql:CharSet", "utf8"),
-                    location = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
-                        .Annotation("MySql:CharSet", "utf8"),
                     reg_info = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
+                        .Annotation("MySql:CharSet", "utf8"),
+                    reg_vocher = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
+                        .Annotation("MySql:CharSet", "utf8"),
+                    reg_money = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8")
                 },
                 constraints: table =>
@@ -185,8 +185,6 @@ namespace ZhuZhuYunAPI.Migrations
                     user_id = table.Column<int>(type: "int", nullable: false),
                     user_type = table.Column<int>(type: "int", nullable: false),
                     machine_codes = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
-                        .Annotation("MySql:CharSet", "utf8"),
-                    reg_money = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
                     bind_machinecount = table.Column<int>(type: "int", nullable: false)
                 },

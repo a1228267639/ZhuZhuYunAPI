@@ -10,7 +10,7 @@ using ZhuZhuYunAPI.Models;
 namespace ZhuZhuYunAPI.Migrations
 {
     [DbContext(typeof(PanoUserContext))]
-    [Migration("20230410092810_init")]
+    [Migration("20230420150542_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -232,7 +232,7 @@ namespace ZhuZhuYunAPI.Migrations
                     b.ToTable("PanoTempUser_Table", (string)null);
                 });
 
-            modelBuilder.Entity("ZhuZhuYunAPI.Models.PanoUser", b =>
+            modelBuilder.Entity("ZhuZhuYunAPI.Models.PanoUserRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -243,16 +243,6 @@ namespace ZhuZhuYunAPI.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("end_date");
-
-                    b.Property<string>("IP")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("ip");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("location");
 
                     b.Property<string>("Reg_Date")
                         .IsRequired()
@@ -267,6 +257,16 @@ namespace ZhuZhuYunAPI.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("reg_info");
+
+                    b.Property<string>("Reg_Money")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("reg_money");
+
+                    b.Property<string>("Reg_Vocher")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("reg_vocher");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int")
@@ -292,11 +292,6 @@ namespace ZhuZhuYunAPI.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("machine_codes");
-
-                    b.Property<string>("Reg_Money")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("reg_money");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int")

@@ -186,6 +186,8 @@ namespace ZhuZhuYunAPI.Migrations
                     user_type = table.Column<int>(type: "int", nullable: false),
                     machine_codes = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
+                    reg_money = table.Column<string>(type: "longtext", nullable: false, collation: "utf8_general_ci")
+                        .Annotation("MySql:CharSet", "utf8"),
                     bind_machinecount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

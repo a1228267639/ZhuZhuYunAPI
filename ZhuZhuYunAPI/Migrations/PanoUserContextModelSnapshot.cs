@@ -290,6 +290,11 @@ namespace ZhuZhuYunAPI.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("machine_codes");
 
+                    b.Property<string>("Reg_Money")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("reg_money");
+
                     b.Property<int>("UserID")
                         .HasColumnType("int")
                         .HasColumnName("user_id");

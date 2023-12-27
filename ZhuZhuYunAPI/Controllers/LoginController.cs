@@ -122,7 +122,7 @@ namespace ZhuZhuYunAPI.Controllers
                     }
                     else
                     {
-                        PanoUser? mPanoUser = null;
+                        PanoUserRecord? mPanoUser = null;
                         mPanoUser = panoUserContext.PanoUser.FirstOrDefault(panaUser => panaUser.UserID == userInfo.UserID);
                         List<string>? machine_List = JsonConvert.DeserializeObject<List<string>>(userInfo.Machine_Codes);
                         if (mPanoUser != null)
@@ -343,13 +343,6 @@ namespace ZhuZhuYunAPI.Controllers
                                                 ResponseLoginData.User_Info = userInfo;
                                                 GenerateLoginRecord(requestLogin, panoUserContext, loginData.Id);
                                                 return ApiResponse.Ok(ResponseLoginData, message);
-                                            }
-                                            else
-                                            {
-                                                userInfo.User_Type = -1;// 设备没有绑定 做到期处理
-                                                ResponseLoginData.User_Info = userInfo;
-                                                GenerateLoginRecord(requestLogin, panoUserContext, loginData.Id);
-                                                return ApiResponse.Ok(ResponseLoginData, "没有激活记录,数据错误");
                                             }
                                         }
                                         else

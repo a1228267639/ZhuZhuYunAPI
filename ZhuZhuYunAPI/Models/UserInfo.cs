@@ -22,8 +22,6 @@ namespace ZhuZhuYunAPI.Models
         [Column("reg_money")]// 激活金额 
         public string Reg_Money { get; set; } = null!;
         [Column("bind_machinecount")]// 绑定的 机器码 
-
-        [Column("bind_machinecount")]// 可以绑定的 机器码  数量
         public int BindMachine_Count { get; set; } = 1;
     }
 }

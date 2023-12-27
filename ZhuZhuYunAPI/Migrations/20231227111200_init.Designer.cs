@@ -10,11 +10,7 @@ using ZhuZhuYunAPI.Models;
 namespace ZhuZhuYunAPI.Migrations
 {
     [DbContext(typeof(PanoUserContext))]
-<<<<<<<< HEAD:ZhuZhuYunAPI/Migrations/20231227063916_init.Designer.cs
-    [Migration("20231227063916_init")]
-========
-    [Migration("20230420150542_init")]
->>>>>>>> e0fb0a73318e88747897a6d77c94a3658192228a:ZhuZhuYunAPI/Migrations/20230420150542_init.Designer.cs
+    [Migration("20231227111200_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -296,6 +292,11 @@ namespace ZhuZhuYunAPI.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("machine_codes");
+
+                    b.Property<string>("Reg_Money")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("reg_money");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int")

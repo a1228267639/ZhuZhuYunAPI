@@ -13,7 +13,7 @@ namespace ZhuZhuYunAPI.Models
         {
         }
 
-        public virtual DbSet<PanoUser> PanoUser { get; set; } = null!;
+        public virtual DbSet<PanoUserRecord> PanoUser { get; set; } = null!;
         public virtual DbSet<PanoTempUser> PanoTempUser { get; set; } = null!;
         public virtual DbSet<BlackRecord> BlackRecord { get; set; } = null!;
         public virtual DbSet<UserInfo> UserInfo { get; set; } = null!;
@@ -36,7 +36,7 @@ namespace ZhuZhuYunAPI.Models
             //public string DepartmentName { get; set; } = null!;
 
 
-            modelBuilder.Entity<PanoUser>(entity =>
+            modelBuilder.Entity<PanoUserRecord>(entity =>
             {
                 entity.ToTable("PanoUser_Table");
                 //entity.Property(e => e.Swith)

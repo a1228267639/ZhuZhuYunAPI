@@ -3,6 +3,6 @@
     public class ResponsePanoUser
     {
         public int TotalCount { get; set; }
-        public List<PanoUser>?  PanoUsers { get; set; }
+        public List<PanoUserRecord>?  PanoUsers { get; set; }
     }
 }

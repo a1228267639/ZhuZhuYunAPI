@@ -106,9 +106,6 @@ namespace ZhuZhuYunAPI.Controllers
                         }
                         userInfo.UserID = loginData.Id;
                         userInfo.BindMachine_Count = 1;
-                        //userInfo.Reg_Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                        //userInfo.Reg_Day = AppConfigHelper.GetTempRegTime();
-                        //userInfo.End_Date = DateTime.Now.AddDays(AppConfigHelper.GetTempRegTime()).ToString("yyyy-MM-dd HH:mm:ss");
                         List<string> machine_List = new List<string>();
                         machine_List.Add(requestLogin.Machine_Code);
                         string machine_Json = JsonConvert.SerializeObject(machine_List);
@@ -168,9 +165,9 @@ namespace ZhuZhuYunAPI.Controllers
                         {
                             case 1:
                                 {
-                                    if (machine_List != null)
+                                    if (machine_List != null && machine_List.Any())
                                     {
-                                        if (machine_List[0] == requestLogin.Machine_Code) //如果绑定的是对应自己的机器码
+                                        if (machine_List.Contains(requestLogin.Machine_Code))//如果绑定的是对应自己的机器码
                                         {
                                             PanoTempUser? PanoTempUser = panoUserContext.PanoTempUser.FirstOrDefault(panaTempUser => panaTempUser.Machine_Code == requestLogin.Machine_Code);
                                             if (PanoTempUser == null)
@@ -313,10 +310,9 @@ namespace ZhuZhuYunAPI.Controllers
                                         }
                                     }
                                 }
-                                break;
                             case 2:
                                 {
-                                    if (machine_List != null)
+                                    if (machine_List != null && machine_List.Any())
                                     {
                                         if (machine_List.Contains(requestLogin.Machine_Code)) //如果绑定的是对应自己的机器码
                                         {
@@ -348,6 +344,13 @@ namespace ZhuZhuYunAPI.Controllers
                                                 GenerateLoginRecord(requestLogin, panoUserContext, loginData.Id);
                                                 return ApiResponse.Ok(ResponseLoginData, message);
                                             }
+                                            else
+                                            {
+                                                userInfo.User_Type = -1;// 设备没有绑定 做到期处理
+                                                ResponseLoginData.User_Info = userInfo;
+                                                GenerateLoginRecord(requestLogin, panoUserContext, loginData.Id);
+                                                return ApiResponse.Ok(ResponseLoginData, "没有激活记录,数据错误");
+                                            }
                                         }
                                         else
                                         {
@@ -367,10 +370,9 @@ namespace ZhuZhuYunAPI.Controllers
                                         return ApiResponse.Ok(ResponseLoginData, message);
                                     }
                                 }
-                                break;
                             case 3:
                                 {
-                                    if (machine_List != null)
+                                    if (machine_List != null && machine_List.Any())
                                     {
                                         if (machine_List.Contains(requestLogin.Machine_Code)) //如果绑定的是对应自己的机器码
                                         {
@@ -384,10 +386,10 @@ namespace ZhuZhuYunAPI.Controllers
                                             }
                                             else
                                             {
-                                                // 设备没有绑定 做到期处理
+                                                userInfo.User_Type = -1;// 设备没有绑定 做到期处理
                                                 ResponseLoginData.User_Info = userInfo;
                                                 GenerateLoginRecord(requestLogin, panoUserContext, loginData.Id);
-                                                return ApiResponse.Ok(ResponseLoginData);
+                                                return ApiResponse.Ok(ResponseLoginData, "没有激活记录,数据错误");
                                             }
                                         }
                                         else
@@ -406,12 +408,11 @@ namespace ZhuZhuYunAPI.Controllers
                                         return ApiResponse.Ok(ResponseLoginData, "用户没有绑定设备");
                                     }
                                 }
-                                break;
                             case -1:
                                 {
-                                    if (machine_List != null)
+                                    if (machine_List != null && machine_List.Any())
                                     {
-                                        if (machine_List[0] == requestLogin.Machine_Code) //如果绑定的是对应自己的机器码
+                                        if (machine_List.Contains(requestLogin.Machine_Code)) //如果绑定的是对应自己的机器码
                                         {
                                             PanoTempUser? PanoTempUser = panoUserContext.PanoTempUser.FirstOrDefault(panaTempUser => panaTempUser.Machine_Code == requestLogin.Machine_Code);
                                             if (PanoTempUser == null)
@@ -518,7 +519,6 @@ namespace ZhuZhuYunAPI.Controllers
                                         return ApiResponse.Ok(ResponseLoginData, message);
                                     }
                                 }
-                                break;
                             default:
                                 message = "限时使用已到期";
                                 userInfo.User_Type = -1;// 设备没有绑定 做到期处理
@@ -692,10 +692,10 @@ namespace ZhuZhuYunAPI.Controllers
             return false;
         }
 
-        public static PanoUser DateSort(List<PanoUser> panoUsers)
+        public static PanoUserRecord DateSort(List<PanoUserRecord> panoUsers)
         {
-            PanoUser[] panos =panoUsers.ToArray();
-            Array.Sort(panos, (a, b) =>b.End_Date.CompareTo(a.End_Date));
+            PanoUserRecord[] panos = panoUsers.ToArray();
+            Array.Sort(panos, (a, b) => b.End_Date.CompareTo(a.End_Date));
             return panos[0];
         }
 

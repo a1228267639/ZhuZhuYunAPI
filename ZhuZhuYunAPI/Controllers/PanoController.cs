@@ -72,6 +72,40 @@ namespace ZhuZhuYunAPI.Controllers
             }
         }
 
+        [HttpGet("PanoLoginRecord/getall")]
+        public ApiResponse PanoLoginRecordGetList(int pageIndex, int pageSize, int sort = 0) //0是倒序 从新到旧
+        {
+            List<PanoLoginRecord> panoLoginRecordCountList = panoUserContext.PanoLoginRecord.ToList();  //查出所有
+            if (sort == 0)
+            {
+                panoLoginRecordCountList.Reverse();
+            }   
+            if (panoLoginRecordCountList != null)
+            {
+                if (panoLoginRecordCountList.Count > 0)
+                {
+                    //总页数
+                    //int total = panoUserTabaCountList.Count % pageSize == 0 ? panoUserTabaCountList.Count / pageSize : (panoUserTabaCountList.Count / pageSize) + 1;
+                    ResponsePanoLoginRecord responsePano = new ResponsePanoLoginRecord();                    
+
+                    List<PanoLoginRecord> pacth = panoLoginRecordCountList.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+                    responsePano.PanoLoginRecords = pacth;
+                    responsePano.TotalCount = panoLoginRecordCountList.Count;
+                    return ApiResponse.Ok(responsePano);
+                }
+                else
+                {
+                    return ApiResponse.BadRequest("数据为空");
+                }
+            }
+            else
+            {
+                return ApiResponse.BadRequest("数据为空");
+            }
+        }
+
+
         //分页查询
         [HttpGet("PanoUser/getMachine"), Authorize()]
         public ApiResponse GetMachine(int pageIndex, int pageSize, int type, string value)

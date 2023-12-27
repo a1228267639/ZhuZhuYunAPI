@@ -10,7 +10,7 @@ using ZhuZhuYunAPI.Models;
 namespace ZhuZhuYunAPI.Migrations
 {
     [DbContext(typeof(PanoUserContext))]
-    [Migration("20230410092810_init")]
+    [Migration("20231227063916_init")]
     partial class init
     {
         /// <inheritdoc />

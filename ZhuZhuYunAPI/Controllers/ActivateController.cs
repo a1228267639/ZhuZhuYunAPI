@@ -132,7 +132,7 @@ namespace ZhuZhuYunAPI.Controllers
                         panoUserContext.PanoUser.Add(panoUser);  //添加一个
                         UserInfo.Machine_Codes = JsonConvert.SerializeObject(machine_List);
 
-                        List<string>? money_List = JsonConvert.DeserializeObject<List<string>>(UserInfo.Reg_Money);
+                        List<string>? money_List = JsonConvert.DeserializeObject<List<string>>(UserInfo.Reg_Money.ToString());
                         if (money_List == null)
                         {
                             money_List = new List<string>();

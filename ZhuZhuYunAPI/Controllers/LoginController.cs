@@ -101,7 +101,7 @@ namespace ZhuZhuYunAPI.Controllers
                             else
                             {
                                 userInfo.User_Type = -1;//到期
-                                message = "限时使用已到期";
+                                message = "此设备的限时使用已到期";
                             }
                         }
                         userInfo.UserID = loginData.Id;
@@ -139,7 +139,7 @@ namespace ZhuZhuYunAPI.Controllers
                                     else
                                     {
                                         userInfo.User_Type = -1;//到期
-                                        message = "限时使用已到期";
+                                        message = "此设备的限时使用已到期";
                                     }
                                     panoUserContext.UserInfo.Update(userInfo);
                                     panoUserContext.SaveChanges();
@@ -198,7 +198,7 @@ namespace ZhuZhuYunAPI.Controllers
                                                 else
                                                 {
                                                     userInfo.User_Type = -1;//到期
-                                                    message = "限时使用已到期";
+                                                    message = "此设备的限时使用已到期";
                                                 }
                                                 panoUserContext.UserInfo.Update(userInfo);
                                                 panoUserContext.SaveChanges();
@@ -244,7 +244,7 @@ namespace ZhuZhuYunAPI.Controllers
                                                 else
                                                 {
                                                     userInfo.User_Type = -1;//到期
-                                                    message = "限时使用已到期";
+                                                    message = "此设备的限时使用已到期";
                                                 }
                                                 machine_List.Clear();
                                                 machine_List.Add(requestLogin.Machine_Code);
@@ -295,7 +295,7 @@ namespace ZhuZhuYunAPI.Controllers
                                             else
                                             {
                                                 userInfo.User_Type = -1;//到期
-                                                message = "限时使用已到期";
+                                                message = "此设备的限时使用已到期";
                                             }
                                             machine_List = new List<string>();
                                             machine_List.Add(requestLogin.Machine_Code);
@@ -335,7 +335,7 @@ namespace ZhuZhuYunAPI.Controllers
                                                 else
                                                 {
                                                     userInfo.User_Type = -1;//到期
-                                                    message = "限时使用已到期";
+                                                    message = "此设备的限时使用已到期";
                                                 }
                                                 panoUserContext.UserInfo.Update(userInfo);
                                                 panoUserContext.SaveChanges();
@@ -438,7 +438,7 @@ namespace ZhuZhuYunAPI.Controllers
                                                 else
                                                 {
                                                     userInfo.User_Type = -1;//到期
-                                                    message = "限时使用已到期";
+                                                    message = "此设备的限时使用已到期";
                                                 }
                                                 panoUserContext.UserInfo.Update(userInfo);
                                                 panoUserContext.SaveChanges();
@@ -483,7 +483,7 @@ namespace ZhuZhuYunAPI.Controllers
                                                 else
                                                 {
                                                     userInfo.User_Type = -1;//到期
-                                                    message = "限时使用已到期";
+                                                    message = "此设备的限时使用已到期";
                                                 }
                                                 machine_List.Clear();
                                                 machine_List.Add(requestLogin.Machine_Code);
@@ -499,7 +499,7 @@ namespace ZhuZhuYunAPI.Controllers
                                     }
                                     else
                                     {
-                                        message = "限时使用已到期";
+                                        message = "此设备的限时使用已到期";
                                         userInfo.User_Type = -1;// 设备没有绑定 做到期处理
                                         machine_List = new List<string>();
                                         machine_List.Add(requestLogin.Machine_Code);
@@ -513,7 +513,7 @@ namespace ZhuZhuYunAPI.Controllers
                                     }
                                 }
                             default:
-                                message = "限时使用已到期";
+                                message = "此设备的限时使用已到期";
                                 userInfo.User_Type = -1;// 设备没有绑定 做到期处理
                                 ResponseLoginData.User_Info = userInfo;
                                 GenerateLoginRecord(requestLogin, panoUserContext, loginData.Id);

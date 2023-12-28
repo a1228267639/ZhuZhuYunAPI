@@ -165,7 +165,7 @@ namespace ZhuZhuYunAPI.Controllers
             string filenames = "";
             var now = DateTime.Now;
             //文件存储路径
-            var filePath = string.Format("/Uploads/{0}/{1}/{2}/", now.ToString("yyyy"), now.ToString("MM"), now.ToString("dd"));
+            var filePath = string.Format("Uploads/{0}/{1}/{2}/", now.ToString("yyyy"), now.ToString("MM"), now.ToString("dd"));
             //获取当前web目录
             var webRootPath = _webHostEnvironment.WebRootPath;
             if (!Directory.Exists(webRootPath + filePath))
